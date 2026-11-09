@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md Shifat Hamidi | Software Developer</title>
+  <meta name="description" content="Md Shifat Hamidi — Software Developer specializing in Odoo ERP development, customization, and system integration. Based in Dhaka." />
+  <meta name="author" content="Md Shifat Hamidi" />
+
+  <!-- Open Graph (link previews on LinkedIn, Slack, etc.) -->
+  <meta property="og:title" content="Md Shifat Hamidi | Software Developer" />
+  <meta property="og:description" content="Odoo ERP development, customization, system integration and automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sifathamidi.github.io/" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f14'/><text x='50' y='64' font-size='44' font-family='monospace' font-weight='700' text-anchor='middle' fill='%232dd4bf'>SH</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo" aria-label="Home">
+        <span class="nav__logo-bracket">&lt;</span>SH<span class="nav__logo-bracket">/&gt;</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="top">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow mono reveal">Hi, my name is</p>
+          <h1 class="hero__name reveal">Md Shifat Hamidi.</h1>
+          <h2 class="hero__role reveal">I build software that runs real businesses.</h2>
+          <p class="hero__tagline reveal">
+            Senior Software Developer specializing in <strong>Odoo ERP</strong> development,
+            customization and system integration — turning complex business workflows into
+            efficient, scalable software.
+          </p>
+          <div class="hero__meta reveal">
+            <span class="pill"><span class="dot"></span>Open to opportunities</span>
+            <span class="pill pill--ghost">📍 Dhaka, Bangladesh</span>
+          </div>
+          <div class="hero__cta reveal">
+            <a href="#projects" class="btn btn--primary">View my work</a>
+            <a href="#contact" class="btn btn--ghost">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero__code reveal" aria-hidden="true">
+          <div class="code-window">
+            <div class="code-window__bar">
+              <span></span><span></span><span></span>
+              <p class="mono">developer.py</p>
+            </div>
+<pre class="code-window__body mono"><code><span class="k">class</span> <span class="c">Developer</span>(models.Model):
+    _name = <span class="s">"shifat.hamidi"</span>
+
+    role = <span class="s">"Senior Odoo Developer"</span>
+    location = <span class="s">"Dhaka, BD"</span>
+    stack = [<span class="s">"Python"</span>, <span class="s">"JavaScript"</span>,
+             <span class="s">"OWL"</span>, <span class="s">"PostgreSQL"</span>]
+
+    <span class="k">def</span> <span class="f">solve</span>(self, problem):
+        <span class="k">return</span> self.build(
+            scalable=<span class="k">True</span>,
+            clean=<span class="k">True</span>,
+        )<span class="cursor">▍</span></code></pre>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="hero__scroll" aria-label="Scroll to about">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section__title reveal">About me</h2>
+        <div class="about">
+          <div class="about__text reveal">
+            <p>
+              I'm a Software Developer specializing in <strong>Odoo ERP development, customization,
+              and system integration</strong>, with hands-on experience across <strong>Odoo 14 to Odoo 19</strong>.
+              I work across the full stack of business software — from Python backend logic and
+              PostgreSQL data models to OWL/JavaScript frontends — mostly in CRM, Sales, Purchase,
+              Inventory, Barcode, Point of Sale and Discuss.
+            </p>
+            <p>
+              I'm experienced in <strong>workflow automation</strong> and <strong>API development</strong>,
+              with a background in <strong>machine learning and time-series forecasting</strong> and hands-on experience
+              working with different <strong>LLMs</strong>.
+            </p>
+            <p>
+              I'm passionate about solving complex problems and building efficient, scalable
+              software solutions that address real-world business needs.
+            </p>
+          </div>
+          <div class="about__stats reveal">
+            <div class="stat">
+              <span class="stat__num" data-count="5">0</span><span class="stat__plus">+</span>
+              <span class="stat__label">Years of experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="4">0</span><span class="stat__plus">+</span>
+              <span class="stat__label">Years building on Odoo</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="6">0</span>
+              <span class="stat__label">Odoo versions (14 → 19)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 class="section__title reveal">Skills &amp; tools</h2>
+        <div class="skills">
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">⚙</div>
+            <h3>Odoo</h3>
+            <ul class="chips">
+              <li>Odoo 14 – 19</li><li>CRM</li><li>Sales</li><li>Purchase</li><li>Inventory</li><li>Barcode</li><li>Point of Sale</li><li>Discuss</li><li>Fleet</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">{ }</div>
+            <h3>Languages &amp; Frameworks</h3>
+            <ul class="chips">
+              <li>Python</li><li>JavaScript</li><li>OWL.js</li><li>QWeb</li><li>HTML</li><li>CSS</li><li>SQL</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">⇄</div>
+            <h3>Backend &amp; Integration</h3>
+            <ul class="chips">
+              <li>PostgreSQL</li><li>REST APIs</li><li>Mobile app integration</li><li>Workflow automation</li><li>PyCharm</li><li>VS Code</li><li>Git</li><li>Linux</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">◈</div>
+            <h3>Data &amp; AI</h3>
+            <ul class="chips">
+              <li>Machine Learning</li><li>Time-series forecasting</li><li>Trend &amp; seasonality analysis</li><li>LLMs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <h2 class="section__title reveal">Experience</h2>
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__card">
+              <div class="timeline__head">
+                <h3>Senior Odoo Developer <span class="at">@ Bista Solutions</span></h3>
+                <span class="timeline__date mono">2026 — Present</span>
+              </div>
+              <ul>
+                <li>Lead the design and development of custom Odoo modules for client business processes.</li>
+                <li>Build integrations between Odoo and mobile apps, external hardware, services and APIs.</li>
+                <li>Review code, guide implementation decisions and prepare client-facing technical documentation.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__card">
+              <div class="timeline__head">
+                <h3>Odoo Developer <span class="at">@ Bista Solutions</span></h3>
+                <span class="timeline__date mono">2022 — 2026</span>
+              </div>
+              <ul>
+                <li>Developed and customized Odoo modules across CRM, Sales, Purchase, Inventory, Barcode, Point of Sale and Discuss, from Odoo 14 onward.</li>
+                <li>Built a warehouse management system, an offline Point of Sale on Odoo 14, and fleet features with real-time vehicle tracking.</li>
+                <li>Automated business workflows and built REST API integrations with third-party systems.</li>
+                <li>Built interactive frontend features with OWL.js and optimized PostgreSQL-backed data models.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__card">
+              <div class="timeline__head">
+                <h3>Machine Learning Engineer <span class="at">@ Bista Solutions</span></h3>
+                <span class="timeline__date mono">2021 — 2022</span>
+              </div>
+              <ul>
+                <li>Built machine learning models to forecast and predict business data.</li>
+                <li>Analyzed weekly, monthly and yearly time-series data for trends and seasonal patterns.</li>
+                <li>Turned trend, seasonality and forecast analysis into predictions that supported business planning.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section__title reveal">Selected work</h2>
+        <p class="section__lead reveal">
+          Most of my work is built for clients, so details are kept general. Happy to walk
+          through the architecture and decisions in a conversation.
+        </p>
+
+        <!-- Featured project -->
+        <article class="project project--featured reveal">
+          <div class="project__body">
+            <p class="project__label mono">Featured · Client project</p>
+            <h3>Smart Measurement &amp; Barcode Scanning for Odoo</h3>
+            <p>
+              A custom Odoo 17 module that brings warehouse measurement and scanning into the
+              Barcode app. It connects Bluetooth laser measuring devices and camera-based barcode
+              scanning (via the Dynamsoft SDK), and adds continuous multi-scan entry on transfers —
+              cutting manual data entry for operators on the floor.
+            </p>
+            <ul class="project__tags mono">
+              <li>Odoo 17</li><li>Python</li><li>OWL.js</li><li>Dynamsoft SDK</li><li>Bluetooth</li>
+            </ul>
+          </div>
+          <div class="project__visual" aria-hidden="true">
+            <div class="scan">
+              <div class="scan__code">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="scan__line"></div>
+              <p class="scan__label mono">SCAN OK · 3 / 3</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-card__top">
+              <span class="project-card__icon">▤</span>
+              <span class="project-card__tag mono">Client work</span>
+            </div>
+            <h3>Warehouse Management System</h3>
+            <p>
+              A warehouse management system built on Odoo Inventory — locations, receipts, picking, transfers and stock control tailored to the client's operations, with barcode-driven workflows for floor staff.
+            </p>
+            <ul class="project__tags mono">
+              <li>Odoo</li><li>Inventory</li><li>Barcode</li><li>Python</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__top">
+              <span class="project-card__icon">⊞</span>
+              <span class="project-card__tag mono">Client work · Odoo 14</span>
+            </div>
+            <h3>Offline Point of Sale</h3>
+            <p>
+              An offline-capable Point of Sale on Odoo 14 that keeps selling when the connection drops — orders are stored locally and synced back to the server once the store is online again.
+            </p>
+            <ul class="project__tags mono">
+              <li>Odoo 14</li><li>Point of Sale</li><li>JavaScript</li><li>Python</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__top">
+              <span class="project-card__icon">◎</span>
+              <span class="project-card__tag mono">Client work</span>
+            </div>
+            <h3>Fleet &amp; Real-time Vehicle Tracking</h3>
+            <p>
+              Fleet features in Odoo with real-time vehicle tracking — live vehicle locations and status in one place, helping teams monitor and manage their fleet.
+            </p>
+            <ul class="project__tags mono">
+              <li>Odoo Fleet</li><li>Python</li><li>Real-time</li><li>APIs</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__top">
+              <span class="project-card__icon">❏</span>
+              <span class="project-card__tag mono">Client work</span>
+            </div>
+            <h3>Book Publishing ERP</h3>
+            <p>
+              Odoo solution for a book publishing business, adapting CRM, sales, purchase and inventory flows to how books are produced, stocked and sold.
+            </p>
+            <ul class="project__tags mono">
+              <li>Odoo</li><li>Sales</li><li>Purchase</li><li>Inventory</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__top">
+              <span class="project-card__icon">▣</span>
+              <span class="project-card__tag mono">Client work</span>
+            </div>
+            <h3>Mobile App &amp; System Integrations</h3>
+            <p>
+              REST APIs that connect Odoo with mobile apps and external platforms, so users work with live ERP data from their phones and systems stay in sync without double entry.
+            </p>
+            <ul class="project__tags mono">
+              <li>REST APIs</li><li>Python</li><li>JSON</li><li>Odoo</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__top">
+              <span class="project-card__icon">◈</span>
+              <span class="project-card__tag mono">ML &amp; AI</span>
+            </div>
+            <h3>Data Forecasting &amp; AI</h3>
+            <p>
+              Time-series forecasting on weekly, monthly and yearly business data — trend and seasonality analysis feeding predictive models — plus experiments integrating different LLMs into developer and business workflows.
+            </p>
+            <ul class="project__tags mono">
+              <li>Python</li><li>Time-series</li><li>Forecasting</li><li>LLMs</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="projects-more reveal">
+          <a class="btn btn--ghost" href="https://github.com/SifatHamidi" target="_blank" rel="noopener">
+            More on GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner reveal">
+        <p class="mono contact__eyebrow">What's next?</p>
+        <h2 class="contact__title">Let's build something together.</h2>
+        <p class="contact__text">
+          Whether you need an Odoo solution, a system integration, or just want to say hi —
+          my inbox is always open.
+        </p>
+        <a href="mailto:sifat.hamidi@gmail.com" class="btn btn--primary btn--lg">Say hello</a>
+        <div class="contact__links">
+          <a href="https://github.com/SifatHamidi" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/shifat-hamidi/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="mailto:sifat.hamidi@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.3-.5 7.7 6.16L19.7 5H4.3ZM20 6.58l-7.38 5.9a1 1 0 0 1-1.24 0L4 6.58V18.5c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V6.58Z"/></svg>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="mono">Designed &amp; built by Md Shifat Hamidi · <span id="year"></span></p>
+      <a href="#top" class="mono">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
