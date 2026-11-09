@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Measurement &amp; Barcode Scanning in Odoo 17 | Md Shifat Hamidi</title>
+  <meta name="description" content="Case study: extending Odoo 17's Barcode app with Bluetooth laser measurement, camera scanning via Dynamsoft and continuous multi-scan on transfers." />
+  <link rel="canonical" href="https://sifathamidi.github.io/case-studies/barcode-scanning.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sifathamidi.github.io/case-studies/barcode-scanning.html" />
+  <meta property="og:title" content="Case study: Measurement & barcode scanning in Odoo 17" />
+  <meta property="og:description" content="Bluetooth laser measurement, camera scanning and continuous multi-scan inside Odoo's Barcode app." />
+  <meta property="og:image" content="https://sifathamidi.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f14'/><text x='50' y='64' font-size='44' font-family='monospace' font-weight='700' text-anchor='middle' fill='%232dd4bf'>SH</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="case-nav">
+    <div class="container">
+      <a href="../index.html" class="nav__logo" aria-label="Home"><span class="nav__logo-bracket">&lt;</span>SH<span class="nav__logo-bracket">/&gt;</span></a>
+      <a href="../index.html#projects" class="back">← Back to all work</a>
+    </div>
+  </header>
+
+  <main class="case">
+    <p class="case__eyebrow mono">Case study · Client project</p>
+    <h1>Measurement &amp; Barcode Scanning in Odoo 17</h1>
+    <p class="case__summary">
+      Bringing laser measurement and fast camera scanning straight into Odoo's Barcode app, so
+      warehouse operators capture data on the floor instead of typing it in.
+    </p>
+
+    <dl class="case__meta">
+      <div><dt>Platform</dt><dd>Odoo 17</dd></div>
+      <div><dt>Area</dt><dd>Barcode · Inventory</dd></div>
+      <div><dt>Stack</dt><dd>OWL.js · Python</dd></div>
+    </dl>
+
+    <h2>The problem</h2>
+    <p>
+      Operators handling long stock items, such as pipes, had to measure each item by hand and
+      key lengths and barcodes into transfers one by one. It was slow, it depended on dedicated
+      scanner hardware, and every manual entry was a chance for a typo to end up in stock records.
+    </p>
+
+    <h2>The approach</h2>
+    <div class="case__diagram" role="img" aria-label="Diagram: a Bluetooth laser device and a phone camera with Dynamsoft both feed a custom OWL module in the Barcode app, which writes to stock transfers.">
+      <svg viewBox="0 0 640 280">
+        <defs>
+          <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/></marker>
+        </defs>
+        <rect x="20" y="28" width="160" height="66" rx="10" class="flow__node"/>
+        <text x="100" y="57" class="flow__text flow__text--strong">Laser device</text>
+        <text x="100" y="76" class="flow__text flow__text--muted">measures length</text>
+
+        <rect x="20" y="186" width="160" height="66" rx="10" class="flow__node"/>
+        <text x="100" y="215" class="flow__text flow__text--strong">Phone / tablet camera</text>
+        <text x="100" y="234" class="flow__text flow__text--muted">Dynamsoft SDK</text>
+
+        <rect x="240" y="96" width="190" height="88" rx="10" class="flow__node flow__node--accent"/>
+        <text x="335" y="128" class="flow__text flow__text--strong">Barcode app</text>
+        <text x="335" y="147" class="flow__text flow__text--muted">custom OWL module</text>
+        <text x="335" y="164" class="flow__text flow__text--muted">continuous scan screen</text>
+
+        <rect x="480" y="105" width="140" height="70" rx="10" class="flow__node"/>
+        <text x="550" y="136" class="flow__text flow__text--strong">Odoo backend</text>
+        <text x="550" y="155" class="flow__text flow__text--muted">stock transfers</text>
+
+        <path d="M180 70 L238 118" class="flow__edge" marker-end="url(#arr2)"/>
+        <path d="M180 210 L238 162" class="flow__edge" marker-end="url(#arr2)"/>
+        <path d="M430 140 L478 140" class="flow__edge" marker-end="url(#arr2)"/>
+
+        <text x="214" y="78" class="flow__label" style="text-anchor:start">Bluetooth</text>
+        <text x="222" y="206" class="flow__label">barcodes</text>
+        <text x="455" y="128" class="flow__label">save</text>
+      </svg>
+    </div>
+    <p class="case__caption">Both inputs feed one custom module inside the standard Barcode app.</p>
+
+    <ul class="case__list">
+      <li><strong>Laser measurement in the flow.</strong> A Bluetooth laser measuring device
+        connects to the Barcode app, so a measured length goes straight into the current
+        operation — no reading off a display and typing it in.</li>
+      <li><strong>Any device becomes a scanner.</strong> Camera-based scanning with the Dynamsoft
+        SDK lets operators scan with a phone or tablet camera instead of dedicated hardware.</li>
+      <li><strong>Continuous multi-scan on transfers.</strong> A dedicated barcode entry screen
+        keeps the camera running so operators can scan item after item on a transfer without
+        stopping between scans.</li>
+      <li><strong>Documented for the client.</strong> Client-facing documentation explains each
+        feature so operators and managers can adopt it quickly.</li>
+    </ul>
+
+    <h2>Key decisions</h2>
+    <div class="decisions">
+      <div class="decision">
+        <h3>Extend the standard Barcode app, don't replace it</h3>
+        <p>Building inside Odoo's own Barcode app with OWL keeps the familiar operator flow and
+          standard stock logic, and keeps the customization smaller and easier to maintain.</p>
+      </div>
+      <div class="decision">
+        <h3>Use a proven scanning SDK</h3>
+        <p>Phone cameras struggle with worn labels and poor lighting. A dedicated SDK gives fast,
+          reliable decoding instead of a fragile home-grown scanner.</p>
+      </div>
+      <div class="decision">
+        <h3>Design for continuous work</h3>
+        <p>Operators scan in bulk. A screen built for scanning many items in a row, with clear
+          feedback after each scan, matches how the work actually happens on the floor.</p>
+      </div>
+    </div>
+
+    <h2>Outcome</h2>
+    <p>
+      Measuring and scanning now happen in one place inside Odoo. Operators enter far less by
+      hand, entry errors drop, and transfers are tallied faster using everyday phones and tablets.
+    </p>
+
+    <h2>Tech</h2>
+    <ul class="case__tags">
+      <li>Odoo 17</li><li>Barcode</li><li>Inventory</li><li>OWL.js</li><li>Python</li><li>Dynamsoft SDK</li><li>Bluetooth</li>
+    </ul>
+
+    <div class="case__next">
+      <a href="../index.html#projects">← All work</a>
+      <a href="offline-pos.html">Next: Offline Point of Sale →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="mono">Md Shifat Hamidi · Senior Odoo Developer</p>
+      <a href="mailto:sifat.hamidi@gmail.com" class="mono">sifat.hamidi@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

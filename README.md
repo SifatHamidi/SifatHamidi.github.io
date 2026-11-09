@@ -19,6 +19,12 @@ Live: https://sifathamidi.github.io
 3. Go to **Settings → Pages → Source: Deploy from a branch → main / (root)** and save.
 4. The site will be live at `https://sifathamidi.github.io` in a minute or two.
 
+## Structure
+
+- `index.html` — homepage
+- `case-studies/` — project case studies (offline POS, barcode scanning)
+- `og-image.png` — social link preview image (1200×630)
+
 ## Customize
 
 - **Accent color:** change `--accent` (and `--accent-soft`, `--accent-glow`) at the top of `style.css`.

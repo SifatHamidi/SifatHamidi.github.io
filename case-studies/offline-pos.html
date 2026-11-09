@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline Point of Sale on Odoo 14 | Md Shifat Hamidi</title>
+  <meta name="description" content="Case study: an offline-capable Point of Sale on Odoo 14 that keeps selling through connection drops and syncs orders safely when back online." />
+  <link rel="canonical" href="https://sifathamidi.github.io/case-studies/offline-pos.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sifathamidi.github.io/case-studies/offline-pos.html" />
+  <meta property="og:title" content="Case study: Offline Point of Sale on Odoo 14" />
+  <meta property="og:description" content="Keeping checkout running through connection drops — local order queue, cached data and safe sync." />
+  <meta property="og:image" content="https://sifathamidi.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f14'/><text x='50' y='64' font-size='44' font-family='monospace' font-weight='700' text-anchor='middle' fill='%232dd4bf'>SH</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="case-nav">
+    <div class="container">
+      <a href="../index.html" class="nav__logo" aria-label="Home"><span class="nav__logo-bracket">&lt;</span>SH<span class="nav__logo-bracket">/&gt;</span></a>
+      <a href="../index.html#projects" class="back">← Back to all work</a>
+    </div>
+  </header>
+
+  <main class="case">
+    <p class="case__eyebrow mono">Case study · Client project</p>
+    <h1>Offline Point of Sale on Odoo 14</h1>
+    <p class="case__summary">
+      Keeping checkout running when the internet or server connection drops — without losing
+      orders or creating duplicates once the store comes back online.
+    </p>
+
+    <dl class="case__meta">
+      <div><dt>Platform</dt><dd>Odoo 14</dd></div>
+      <div><dt>Area</dt><dd>Point of Sale</dd></div>
+      <div><dt>Stack</dt><dd>JavaScript · Python</dd></div>
+    </dl>
+
+    <h2>The problem</h2>
+    <p>
+      A retail Point of Sale is only useful if it keeps working at the counter. The client's
+      stores could not rely on a stable connection to the Odoo server, and every outage meant
+      stalled checkouts, manual workarounds and the risk of lost or mismatched sales.
+    </p>
+    <p>
+      The goal: cashiers should be able to keep selling normally while offline, and every order
+      must reach the server exactly once when the connection returns.
+    </p>
+
+    <h2>The approach</h2>
+    <div class="case__diagram" role="img" aria-label="Diagram: the POS screen reads cached data and saves orders to a local queue; the queue syncs to the Odoo server when online.">
+      <svg viewBox="0 0 640 290">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/></marker>
+        </defs>
+        <rect x="20" y="110" width="150" height="70" rx="10" class="flow__node flow__node--accent"/>
+        <text x="95" y="141" class="flow__text flow__text--strong">POS screen</text>
+        <text x="95" y="160" class="flow__text flow__text--muted">browser · cashier</text>
+
+        <rect x="220" y="22" width="200" height="70" rx="10" class="flow__node"/>
+        <text x="320" y="52" class="flow__text flow__text--strong">Cached data</text>
+        <text x="320" y="71" class="flow__text flow__text--muted">products · prices · customers</text>
+
+        <rect x="220" y="198" width="200" height="70" rx="10" class="flow__node"/>
+        <text x="320" y="228" class="flow__text flow__text--strong">Local order queue</text>
+        <text x="320" y="247" class="flow__text flow__text--muted">unique ID per order</text>
+
+        <rect x="470" y="110" width="150" height="70" rx="10" class="flow__node"/>
+        <text x="545" y="141" class="flow__text flow__text--strong">Odoo server</text>
+        <text x="545" y="160" class="flow__text flow__text--muted">pos.order</text>
+
+        <path d="M470 125 L422 72" class="flow__edge" marker-end="url(#arr)"/>
+        <path d="M220 72 L172 125" class="flow__edge" marker-end="url(#arr)"/>
+        <path d="M172 165 L218 218" class="flow__edge" marker-end="url(#arr)"/>
+        <path d="M422 218 L468 165" class="flow__edge" marker-end="url(#arr)"/>
+
+        <text x="452" y="92" class="flow__label" text-anchor="start" style="text-anchor:start">load at session start</text>
+        <text x="188" y="92" class="flow__label" style="text-anchor:end">read while offline</text>
+        <text x="188" y="206" class="flow__label" style="text-anchor:end">save every order</text>
+        <text x="452" y="206" class="flow__label" style="text-anchor:start">sync when online</text>
+      </svg>
+    </div>
+    <p class="case__caption">Orders always go to a local queue first, then sync to Odoo when the connection allows.</p>
+
+    <ul class="case__list">
+      <li><strong>Cache what checkout needs.</strong> Products, prices, taxes and customers are loaded
+        when the session starts, so the POS can complete a sale without asking the server.</li>
+      <li><strong>Queue every order locally.</strong> Each completed order is written to browser
+        storage first, so a dropped connection or a closed tab never loses a sale.</li>
+      <li><strong>Sync automatically.</strong> When the connection returns, queued orders are
+        sent to Odoo in batches, with retries for any that fail.</li>
+      <li><strong>Keep cashiers informed.</strong> A clear online/offline status and a count of
+        pending orders show staff exactly what still needs to sync.</li>
+    </ul>
+
+    <h2>Key decisions</h2>
+    <div class="decisions">
+      <div class="decision">
+        <h3>Client-generated order IDs</h3>
+        <p>Each order gets a unique ID on the device at the moment it's created. The server uses it
+          to recognize orders it has already received, so retries and repeated syncs can never
+          create duplicate sales.</p>
+      </div>
+      <div class="decision">
+        <h3>Local-first, server-confirmed</h3>
+        <p>An order is removed from the local queue only after the server confirms it was saved.
+          Until then it stays on the device, which keeps data safe through crashes and reloads.</p>
+      </div>
+      <div class="decision">
+        <h3>Be clear about what needs the server</h3>
+        <p>Actions that depend on live server data can't be fully trusted offline. Instead of
+          guessing, those are limited or deferred while offline, so the core flow — scanning,
+          pricing, payment and receipt — stays reliable.</p>
+      </div>
+    </div>
+
+    <h2>Outcome</h2>
+    <p>
+      Stores keep selling through connection drops, and orders reach Odoo automatically once the
+      connection is back — without manual re-entry and without duplicate records.
+    </p>
+
+    <h2>Tech</h2>
+    <ul class="case__tags">
+      <li>Odoo 14</li><li>Point of Sale</li><li>JavaScript</li><li>Python</li><li>Browser storage</li><li>PostgreSQL</li>
+    </ul>
+
+    <div class="case__next">
+      <a href="../index.html#projects">← All work</a>
+      <a href="barcode-scanning.html">Next: Measurement &amp; barcode scanning →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="mono">Md Shifat Hamidi · Senior Odoo Developer</p>
+      <a href="mailto:sifat.hamidi@gmail.com" class="mono">sifat.hamidi@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>
