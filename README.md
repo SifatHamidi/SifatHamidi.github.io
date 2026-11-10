@@ -21,7 +21,8 @@ Live: https://sifathamidi.github.io
 
 ## Structure
 
-- `index.html` — homepage
+- `index.html` — homepage (self-contained: styles and scripts inline)
+- `style.css` — styles used by the case-study pages
 - `case-studies/` — project case studies (offline POS, barcode scanning)
 - `og-image.png` — social link preview image (1200×630)
 
