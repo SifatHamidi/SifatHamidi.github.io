@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
 <title>Md Shifat Hamidi | Senior Odoo Developer</title>
 <meta name="description" content="Md Shifat Hamidi — Senior Odoo Developer in Dhaka. Odoo 14–19 development, customization and system integration." />
 <meta property="og:title" content="Md Shifat Hamidi | Senior Odoo Developer" />
@@ -116,7 +124,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .filters button:hover{border-color:var(--accent)}
 .filters button.on{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
 .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.proj{padding:22px;display:flex;flex-direction:column}
+.proj{padding:22px;display:flex;flex-direction:column;position:relative}
 .proj:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .proj.hide{display:none}
 .proj__top{display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -131,8 +139,13 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .proj h3{font-size:1.06rem;font-weight:600;margin-top:16px;line-height:1.35}
 .proj p{color:var(--muted);font-size:.92rem;margin-top:10px;flex:1}
 .proj .tags{margin-top:16px}
-.proj__link{margin-top:14px;font-size:.86rem;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
-.proj__link:hover{text-decoration:underline;text-underline-offset:3px}
+.proj__link{margin-top:14px;font-size:.86rem;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px;align-self:flex-start}
+.proj:hover .proj__link{text-decoration:underline;text-underline-offset:3px}
+.proj__link::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.proj:has(.proj__link){cursor:pointer}
+.proj:has(.proj__link):hover{border-color:var(--accent)}
+.proj:has(.proj__link:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+.proj__link:focus-visible{outline:none}
 
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
@@ -188,6 +201,17 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .cinfo svg.i{margin-top:4px;color:var(--muted)}
 .cinfo small{display:block;font-family:var(--mono);font-size:.74rem;color:var(--dim)}
 .cinfo b{font-weight:500;font-size:.94rem;word-break:break-word}
+.cinfo div{align-items:flex-start}
+.cinfo div > span{flex:1;min-width:0}
+.copy{display:inline-flex;align-items:center;gap:6px;align-self:center;font-family:inherit;font-size:.8rem;color:var(--muted);background:var(--bg-2);border:1px solid var(--line-2);border-radius:8px;padding:6px 10px;cursor:pointer;transition:color .2s,border-color .2s}
+.copy:hover{color:var(--text);border-color:var(--accent)}
+.copy svg.i{width:14px;height:14px;margin:0!important;color:currentColor!important}
+.copy .ic-ok{display:none}
+.copy.done{color:var(--green);border-color:var(--green)}
+.copy.done .ic-copy{display:none}
+.copy.done .ic-ok{display:block}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);padding:10px 18px;border-radius:999px;background:var(--btn-bg);color:var(--btn-fg);font-size:.88rem;font-weight:500;box-shadow:0 14px 30px -12px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 .cbox h4{font-size:.8rem;letter-spacing:1.5px;font-weight:600;margin-bottom:14px}
 .clink{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;transition:border-color .2s,transform .2s}
 .clink+.clink{margin-top:10px}
@@ -288,6 +312,8 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
   <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
@@ -389,14 +415,14 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
           <h3>Smart Measurement &amp; Barcode Scanning</h3>
           <p>Bluetooth laser measurement, camera scanning via the Dynamsoft SDK and a continuous multi-scan screen built into Odoo's Barcode app.</p>
           <div class="tags"><span class="tag">OWL.js</span><span class="tag">Python</span><span class="tag">Dynamsoft</span><span class="tag">Bluetooth</span></div>
-          <a class="proj__link" href="https://sifathamidi.github.io/case-studies/barcode-scanning.html">Case study <svg class="i"><use href="#i-arrow"/></svg></a>
+          <a class="proj__link" href="https://sifathamidi.github.io/case-studies/barcode-scanning.html" aria-label="Read the barcode scanning case study">Case study <svg class="i"><use href="#i-arrow"/></svg></a>
         </article>
         <article class="card proj rv" data-c="pos">
           <div class="proj__top"><span class="cat cat--pos">POS</span><span class="ver">Odoo 14</span></div>
           <h3>Offline Point of Sale</h3>
           <p>Checkout that keeps running through connection drops — orders are queued locally and synced to the server once back online, with no duplicates.</p>
           <div class="tags"><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">PostgreSQL</span></div>
-          <a class="proj__link" href="https://sifathamidi.github.io/case-studies/offline-pos.html">Case study <svg class="i"><use href="#i-arrow"/></svg></a>
+          <a class="proj__link" href="https://sifathamidi.github.io/case-studies/offline-pos.html" aria-label="Read the offline POS case study">Case study <svg class="i"><use href="#i-arrow"/></svg></a>
         </article>
         <article class="card proj rv" data-c="inventory">
           <div class="proj__top"><span class="cat cat--inv">Inventory</span><span class="ver">Odoo</span></div>
@@ -551,7 +577,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
           <div class="card cbox cbox--avail rv"><b><span class="dot"></span>Available for new roles</b><p>Full-time positions and freelance Odoo projects, remote or Dhaka-based.</p></div>
           <div class="card cbox rv">
             <div class="cinfo">
-              <div><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small><b>sifat.hamidi@gmail.com</b></span></div>
+              <div><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small><b>sifat.hamidi@gmail.com</b></span><button class="copy" type="button" data-copy="sifat.hamidi@gmail.com" aria-label="Copy email address"><svg class="i ic-copy"><use href="#i-copy"/></svg><svg class="i ic-ok"><use href="#i-check"/></svg><span>Copy</span></button></div>
               <div><svg class="i"><use href="#i-pin"/></svg><span><small>Location</small><b>Dhaka, Bangladesh</b></span></div>
               <div><svg class="i"><use href="#i-clock"/></svg><span><small>Timezone</small><b>BST (UTC +6:00)</b></span></div>
             </div>
@@ -583,6 +609,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
     <nav><a href="#home">↑ Back to top</a><span>© <span id="yr"></span></span></nav>
   </div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <a href="#home" class="totop" id="totop" aria-label="Back to top"><svg class="i"><use href="#i-up"/></svg></a>
 
 <script>
@@ -590,12 +617,29 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   const root = document.documentElement;
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Theme toggle (remembered per visitor)
-  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  // Theme: follows the device setting until the visitor picks one with the toggle
+  const saved = () => { try { return localStorage.getItem('theme'); } catch (e) { return null; } };
+  const mq = window.matchMedia ? matchMedia('(prefers-color-scheme: light)') : null;
+  if (mq) mq.addEventListener('change', e => { if (!saved()) root.dataset.theme = e.matches ? 'light' : 'dark'; });
   document.getElementById('theme').addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
   });
+
+  // Copy email
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  const showToast = msg => { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 2200); };
+  document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
+    const text = btn.dataset.copy;
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
+      const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'absolute'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select(); try { ok = document.execCommand('copy'); } catch (e2) {} ta.remove();
+    }
+    if (ok) { btn.classList.add('done'); setTimeout(() => btn.classList.remove('done'), 1800); showToast('Email copied'); }
+    else showToast('Couldn\'t copy. Email: ' + text);
+  }));
 
   // Mobile menu
   const nav = document.getElementById('nav'), burger = document.getElementById('burger');
