@@ -20,7 +20,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f172a'/><text x='50' y='64' font-size='42' font-family='Arial' font-weight='800' text-anchor='middle' fill='%2338bdf8'>SH</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=Space+Grotesk:wght@500..700&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet" />
 <style>
 :root,[data-theme="dark"]{
   --bg:#0b1018; --bg-2:#0f1622; --card:#111926; --card-2:#162031; --line:#1f2a3b; --line-2:#2b3a51;
@@ -34,7 +34,7 @@
   --accent:#0284c7; --accent-2:#0369a1; --accent-soft:rgba(2,132,199,.1);
   --green:#16a34a; --btn-bg:#0f172a; --btn-fg:#ffffff; --nav-bg:rgba(247,248,250,.85); --shadow:0 20px 40px -26px rgba(15,23,42,.25);
 }
-:root{--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--max:1100px;--r:14px}
+:root{--display:"Space Grotesk","Inter",system-ui,sans-serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--max:1100px;--r:14px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px;overflow-x:clip}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
@@ -265,6 +265,16 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .skill:hover{border-color:var(--line-2);border-top-color:var(--a)}
 @media (max-width:980px){.logos{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:640px){.logos{grid-template-columns:repeat(4,1fr);gap:8px}.logo{padding:14px 4px 10px}.logo span{font-size:.7rem}}
+
+
+/* ---- headings in Space Grotesk ---- */
+.links a,.btn,.filters button,.hero__role{font-family:var(--display)}
+.links a,.btn,.filters button{letter-spacing:-.005em}
+.hero__role{font-weight:500;letter-spacing:-.015em}
+.brand,.hero h1,.h2,.stat b,.photo__mono,.sub,.proj h3,.xp__top h3,.skill h3,.edu h3,.focus h3{font-family:var(--display)}
+.hero h1,.h2{font-weight:700;letter-spacing:-.035em}
+.brand,.stat b,.photo__mono{font-weight:700;letter-spacing:-.02em}
+.proj h3,.xp__top h3,.skill h3,.edu h3,.focus h3,.sub{font-weight:600;letter-spacing:-.01em}
 
 /* responsive */
 @media (max-width:980px){

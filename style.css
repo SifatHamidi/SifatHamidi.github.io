@@ -410,3 +410,8 @@ strong { color: var(--text); font-weight: 600; }
   .case__meta { grid-template-columns: 1fr; }
   .strip__versions { width: 100%; }
 }
+
+/* ---- case-study headings & UI in Space Grotesk (matches homepage) ---- */
+.case h1,.case h2,.decision h3,.case__meta dd,.case__next a,.case-nav a.back{font-family:"Space Grotesk","Inter",system-ui,sans-serif}
+.case h1{font-weight:700;letter-spacing:-.035em}
+.case h2{font-weight:700;letter-spacing:-.02em}
